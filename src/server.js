@@ -7,11 +7,21 @@ import dotenv from "dotenv";
 const app = express();
 dotenv.config();
 
+// console.log("cors", process.env.CORS_ORIGIN);
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN,
+//     credentials: true,
+//   })
+// );
+
 console.log("cors", process.env.CORS_ORIGIN);
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN || "https://mac-frontend-two.vercel.app",
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
 
